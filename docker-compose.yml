@@ -1,0 +1,6 @@
+version: '3.4'
+
+services:
+  tests:
+    build: .
+    command: ["pytest", "--pylama", "--cov=src", "--cov-report", "term-missing", "$TEST_FILE"]

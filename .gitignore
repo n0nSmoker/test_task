@@ -1,0 +1,12 @@
+.idea
+.virtualenv
+env
+*.pyc
+__MACOSX
+.DS_Store
+*.egg-info
+tests/.cache
+__pycache__
+.cache
+*.retry
+.coverage
