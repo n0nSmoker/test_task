@@ -6,7 +6,10 @@ Merges multiple files in one
 - [Tests](#Tests)
 
 ## Usage
-See `tests/test_csv_file_saver.py` for examples of usage
+```bash
+python src/run.py tests/data/bank1.csv tests/data/bank2.csv tests/data/bank3.csv
+```
+Also see `tests/test_csv_file_saver.py` for examples of usage
 
 
 # Tests

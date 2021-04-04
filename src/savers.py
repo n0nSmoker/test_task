@@ -2,15 +2,10 @@ import csv
 from abc import abstractmethod, ABC
 
 
-class NoMethodException(Exception):
-    pass
-
-
 class FileSaver(ABC):
-    def __init__(self, fields: tuple, sources: tuple, silent: bool = False):
+    def __init__(self, fields: tuple, sources: tuple):
         self.fields = fields
         self.sources = sources
-        self.silent = silent
 
     @abstractmethod
     def save(self, path):
@@ -23,14 +18,7 @@ class FileSaver(ABC):
             for row in source.loader.get_rows():
                 result = {}
                 for field in self.fields:
-                    method_name = source.get_method_name(field)
-                    method = getattr(source, method_name, None)
-                    if method:
-                        result[field] = method(row)
-                    elif self.silent:
-                        result[field] = source.missing
-                    else:
-                        raise NoMethodException(f'Can not get {field} form {source} {method_name} is missing')
+                    result[field] = source.get(field=field, row=row)
                 yield result
 
 
